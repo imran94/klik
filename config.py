@@ -3,7 +3,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 class Config:
-    SECRET_KEY = os.environ.get('wabbajack')
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'wabbajack'
     MAIL_SERVER = os.environ.get('MAIL_SERVER', 'smtp.googlemail.com')
     MAIL_PORT = int(os.environ.get('MAIL_PORT', '587'))
     MAIL_USE_TLS = os.environ.get('MAIL_USER_TLS', 'true').lower() in \
@@ -12,7 +12,7 @@ class Config:
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     KLIK_MAIL_SUBJECT_PREFIX = '[Klik]'
     KLIK_MAIL_SENDER = 'Klik Admin <klik@example.com>'
-    KLIK_ADMIN = os.environ.get('FLASKY_ADMIN')
+    KLIK_ADMIN = os.environ.get('KLIK_ADMIN')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     @staticmethod
@@ -22,8 +22,7 @@ class Config:
 
 class DevelopmentConfig(Config):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
-        'sqlite:///' = os.path.join(basedir, 'data-dev.sqlite')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or 'sqlite:///' + os.path.join(basedir, 'data-dev.sqlite')
 
 
 class TestingConfig(Config):
