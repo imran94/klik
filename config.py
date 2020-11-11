@@ -15,6 +15,7 @@ class Config:
     KLIK_ADMIN = os.environ.get('KLIK_ADMIN')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     KLIK_POSTS_PER_PAGE = 20
+    KLIK_FOLLOWERS_PER_PAGE = 20
 
     @staticmethod
     def init_app(app):

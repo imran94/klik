@@ -38,3 +38,15 @@ class UserModelTestCase(unittest.TestCase):
         self.assertFalse(u.can(Permission.WRITE))
         self.assertFalse(u.can(Permission.MODERATE))
         self.assertFalse(u.can(Permission.ADMIN))
+
+    def test_follow(self):
+        u = User.query.all()
+        u1 = u[10]
+        u2 = u[20]
+        u1.follow(u2)
+        self.assertTrue(u1 is not None)
+        self.assertTrue(u2 is not None)
+        self.assertTrue(u1.is_following(u2))
+        self.assertTrue(u2.is_followed_by(u1))
+        u1.unfollow(u2)
+        self.assertFalse(u1.is_following(u2))
