@@ -16,6 +16,7 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     KLIK_POSTS_PER_PAGE = 20
     KLIK_FOLLOWERS_PER_PAGE = 20
+    KLIK_COMMENTS_PER_PAGE = 20
 
     @staticmethod
     def init_app(app):
